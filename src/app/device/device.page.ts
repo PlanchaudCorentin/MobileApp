@@ -57,7 +57,6 @@ export class DevicePage implements OnInit {
       })
 
     })
-    //console.log(this.macaddress);
   }
 
 
@@ -83,17 +82,16 @@ export class DevicePage implements OnInit {
   lines : string[] = [];
   average:string;
   
-  /*dataTable = [[
-    'Type', 'Average', 'Sum'
+  dataTable2 = [[
+    'Type', 'Humidity', 'Temperature'
   ],
-  ['Sensor 1', 12, 13],
-  ['Sensor 2', 15, 13],
-  ['Sensor 3', 16, 32]];
   
-  useAngularLibrary() {
+  ['Sensor 1', 12, 13]];
+  
+  /*useAngularLibrary() {
     this.pieChartData = {
       chartType: 'ColumnChart',
-      dataTable: this.dataTable,
+      dataTable: this.dataTable2,
       legend: {
         position: 'bottom'
       }

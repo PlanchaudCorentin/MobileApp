@@ -16,12 +16,10 @@ export class SensorsService {
           average: 25,
           data_sensor: [
             {
-              average: 10,
-              sum: 99,
+              humidity: 99,
               hours: "10:07"
             },
             {
-              average: 25,
               sum: 45,
               hours: "10:08"
             },
