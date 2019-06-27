@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { DataService } from '../services/data.service';
-
+import { MsalService } from '../services/msal.service';
 
 @Component({
   selector: 'app-device',
@@ -15,7 +15,10 @@ import { DataService } from '../services/data.service';
 })
 export class DevicePage implements OnInit {
 
+  value: number;
   result: Observable<any>;
+  macaddress: Observable<any>;
+  metrics: Observable<any>;
   id:string;
   id_device:string;
   itemInfo:any;
@@ -23,7 +26,14 @@ export class DevicePage implements OnInit {
   sensor2: { id?: string; name?: string; id_device?: string; data: any };
   sensor: { id?: string; name?: string; id_device?: string; data: any }[];
 
-  constructor(private activatedRoute: ActivatedRoute, public devicesService: DevicesService, private sensorsService: SensorsService, private dataService: DataService, private route: Router) { 
+
+  constructor(
+    private activatedRoute: ActivatedRoute, 
+    public devicesService: DevicesService, 
+    private sensorsService: SensorsService, 
+    private dataService: DataService, 
+    private msal: MsalService,
+    private route: Router) { 
   }
 
   public sensorslists = this.sensorsService.lists;
@@ -33,6 +43,31 @@ export class DevicePage implements OnInit {
     this.device = this.devicesService.lists.find(e => { return e.id === this.itemInfo });
     this.sensor = this.sensorsService.lists.filter(e => { return e.id_device === this.device.id });
     this.result = this.dataService.getDeviceById(this.itemInfo);
+    this.macaddress = this.dataService.searchData(this.msal.getUserEmail());
+
+    //this.macaddress = this.dataService.getMacAdressByIdDevice(this.itemInfo);
+    this.macaddress.forEach(element=> {
+      //console.log(element[0].mac_address)
+
+      let macaddress2 = element[0].mac_address
+      this.metrics = this.dataService.getMetricsBySensor("44:81:C0:0D:6C:E6");
+      //console.log(this.metrics);
+      this.metrics.forEach(element2=> {
+        console.log(element2);
+      })
+
+    })
+    //console.log(this.macaddress);
+  }
+
+
+  sendDeviceValue(){
+    let commandValue = this.value;
+    if(commandValue == 0){
+      console.log("La commande est : ");
+    }else{
+
+    }
   }
 
   itemClicked(item: any) {
@@ -43,7 +78,6 @@ export class DevicePage implements OnInit {
     this.useAngularLibrary();
   }
   
-
   pieChartData;
   dataTable : any[] = [];
   lines : string[] = [];
@@ -83,7 +117,4 @@ export class DevicePage implements OnInit {
       }
     };
   }
-
-
-
 }

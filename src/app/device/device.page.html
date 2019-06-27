@@ -20,8 +20,8 @@
     
     <ion-item>
         <ion-label>Send a command</ion-label>
-        <ion-select value="command" okText="Okay" cancelText="Dismiss">
-          <ion-select-option value="0">Change temperature</ion-select-option>
+        <ion-select value="command" okText="Okay" cancelText="Dismiss" [(ngModel)]="value" (ionChange)="sendDeviceValue();">
+          <ion-select-option  value="0">Change temperature</ion-select-option>
           <ion-select-option value="1">Send signal</ion-select-option>
         </ion-select>
       </ion-item>
@@ -40,8 +40,8 @@
         {{sensor.name}}
       </ion-item>-->
       <ion-item button clear *ngFor="let item of (result | async)" (click)="itemClicked(item)">
-          {{item.id}} - {{item.name}}
-        </ion-item>
+        {{item.id}} - {{item.name}}
+      </ion-item>
     </ion-list>
 
 </ion-content>

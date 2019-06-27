@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
 
     goTo() {
         this.router.navigateByUrl('/tabs/tab1');
-        this.dataService.postCommand(this.msalService.getFullName(), this.msalService.getUserEmail());
+        this.dataService.postUserAD(this.msalService.getFullName(), this.msalService.getUserEmail());
     }
 
     ngOnInit() {
