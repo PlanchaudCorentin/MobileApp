@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Accueil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="center" *ngIf="isUserLoggedIn()">
+    <ion-card class="welcome-card">
+      <!--<ion-img src="/assets/shapes.svg"></ion-img>-->
+      <ion-card-header>
+          <ion-button style="float:right;" size="small" (click)="logout()">Logout</ion-button>
+        <ion-card-subtitle>C'est parti</ion-card-subtitle>
+        <ion-card-title>Welcome !</ion-card-title>
+        <div class="center" *ngIf="isUserLoggedIn()">
+          <ion-text> {{fullname()}} </ion-text>
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
+      </ion-card-content>
+    </ion-card>
+
+
+    <div class="center" *ngIf="!isUserLoggedIn()">
+      <!--<ion-button padding expand="block" (click)="onGoToLogin()">Login page</ion-button>-->
+      <ion-button padding expand="block" (click)="goTo()">Login page</ion-button>
+    </div>
+  </div>
+
+  <div class="center" *ngIf="!isUserLoggedIn()">
+      <ion-card class="welcome-card">
+      <!--<ion-img src="/assets/shapes.svg"></ion-img>-->
+      <ion-card-header>
+        <ion-card-subtitle>C'est parti</ion-card-subtitle>
+        <ion-card-title>Welcome !</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>You need to connect to your account.</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button padding expand="block" (click)="goTo()">Login page</ion-button>
+  
+  </div>
+</ion-content>
+

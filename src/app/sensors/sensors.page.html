@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>List all sensors</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <!--<ion-item button clear *ngFor="let sensorslists of sensorslists" (click)="itemClicked(sensorslists)">
+      {{sensorslists.name}}
+    </ion-item>-->
+    <ion-item button clear *ngFor="let item of (result | async)" (click)="itemClicked(item)">
+      {{item.id}} - {{item.name}}
+    </ion-item>
+  </ion-list>
+</ion-content>

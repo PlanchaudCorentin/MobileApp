@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{sensor.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item lines="none">
+    <ion-label>
+      Average
+    </ion-label>
+    <ion-note color="primary" slot="end">50</ion-note>
+  </ion-item>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Chart sensors average</ion-card-subtitle>
+    </ion-card-header>
+    <google-chart stye="padding:30px" *ngIf="pieChartDataSensor" [data]="pieChartDataSensor"></google-chart>
+  </ion-card>
+
+
+  <ion-item *ngFor="let item of (result | async)">
+      ID Sensor : {{item.data}} - {{item.data_type}} - {{item.unit}}
+  </ion-item>
+
+
+
+</ion-content>

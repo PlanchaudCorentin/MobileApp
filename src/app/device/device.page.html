@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{device.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+
+    <ion-item lines="none">
+      <ion-label>
+        Average
+      </ion-label>
+      <ion-note color="primary" slot="end">50</ion-note>
+    </ion-item>
+    
+    <ion-item>
+        <ion-label>Send a command</ion-label>
+        <ion-select value="command" okText="Okay" cancelText="Dismiss">
+          <ion-select-option value="0">Change temperature</ion-select-option>
+          <ion-select-option value="1">Send signal</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Chart all sensors average</ion-card-subtitle>
+      </ion-card-header>
+      <google-chart stye="padding:30px" *ngIf="pieChartData" [data]="pieChartData"></google-chart>
+    </ion-card>
+
+
+    <ion-list-header color="">Device sensors</ion-list-header>
+    <ion-list>
+      <!--<ion-item button clear *ngFor="let sensor of sensor" (click)="itemClicked(sensor)">
+        {{sensor.name}}
+      </ion-item>-->
+      <ion-item button clear *ngFor="let item of (result | async)" (click)="itemClicked(item)">
+          {{item.id}} - {{item.name}}
+        </ion-item>
+    </ion-list>
+
+</ion-content>
