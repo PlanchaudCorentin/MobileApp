@@ -29,6 +29,7 @@ export class DevicesPage implements OnInit{
     ngOnInit() {
       this.result = this.dataService.searchData(this.msal.getUserEmail());
       //console.log('result :' + this.result);
+      console.log("List of all devices by user: " + this.result)
     }
 
     initializeItems() {

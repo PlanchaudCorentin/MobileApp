@@ -88,7 +88,7 @@ export class DataService {
 
   pushCommand(command : string){
     return this.http.get(`${this.url_command}api/command/${encodeURI(command)}`).pipe(map(data => {})).subscribe(result => {
-      console.log(result);
+      console.log(this.http.get(`${this.url_command}api/command/${encodeURI(command)}`));
     });
   
     

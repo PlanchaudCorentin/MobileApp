@@ -42,6 +42,8 @@ export class DevicePage implements OnInit {
     this.device = this.devicesService.lists.find(e => { return e.id === this.itemInfo });
     this.sensor = this.sensorsService.lists.filter(e => { return e.id_device === this.device.id });
     this.result = this.dataService.getDeviceById(this.itemInfo);
+
+    console.log("Sensors by devices : " + this.result)
   }
 
   sendDeviceValue(){

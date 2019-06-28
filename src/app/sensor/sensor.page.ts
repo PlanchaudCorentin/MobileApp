@@ -62,6 +62,7 @@ export class SensorPage implements OnInit {
    // this.dataAverage = Object.keys(a).map(function(key){return a[key]})
     this.macaddress = this.dataService.searchData(this.msal.getUserEmail());
 
+    console.log("Last values on this sensor : " + this.average)
     
   }
 

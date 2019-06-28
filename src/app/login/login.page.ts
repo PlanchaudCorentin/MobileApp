@@ -19,12 +19,14 @@ export class LoginPage implements OnInit {
   constructor(private router: Router, private msalService: MsalService, private dataService: DataService) { }
 
     goTo() {
+      
         this.router.navigateByUrl('/tabs/tab1');
-        this.dataService.postUserAD(this.msalService.getFullName(), this.msalService.getUserEmail());
+        //this.dataService.postUserAD(this.msalService.getFullName(), this.msalService.getUserEmail());
     }
 
     ngOnInit() {
       this.result = this.dataService.searchData(this.msalService.getUserEmail());
+      console.log( this.dataService.postUserAD(this.msalService.getFullName(), this.msalService.getUserEmail()))
     }
 
     useremail(){
