@@ -9,24 +9,35 @@
 
 <ion-content>
 
-  <ion-item lines="none">
-    <ion-label>
-      Average
-    </ion-label>
-    <ion-note color="primary" slot="end">50</ion-note>
-  </ion-item>
+    <ion-item>
+        <ion-label>Choose a graph</ion-label>
+        <ion-select value="command" okText="Okay" cancelText="Dismiss" [(ngModel)]="value" (ionChange)="sendDeviceValue();">
+          <ion-select-option  value="0">Order by day</ion-select-option>
+          <ion-select-option value="1">Order by week</ion-select-option>
+          <ion-select-option value="2">Order by month</ion-select-option>
+        </ion-select>
+      </ion-item>
 
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>Chart sensors by day</ion-card-subtitle>
+      <ion-card-subtitle>Chart sensors</ion-card-subtitle>
     </ion-card-header>
     <google-chart stye="padding:30px" *ngIf="pieChartDataDay" [data]="pieChartDataDay"></google-chart>
   </ion-card>
 
+  <!--<ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Chart sensors by week</ion-card-subtitle>
+    </ion-card-header>
+    <google-chart stye="padding:30px" *ngIf="pieChartDataWeek" [data]="pieChartDataWeek"></google-chart>
+  </ion-card>-->
+  
 
-  <!--<ion-item *ngFor="let dataAverage of (dataAverage | async)">-->
-  <ion-item>
-      ID Sensor : {{dataAverage}}
+
+  <ion-item *ngFor="let item of (average | async)">
+    Last value : {{item.data}} <br> <br>
+    Type : {{item.data_type}}  <br> <br>
+    Unit : {{item.unit}}
   </ion-item>
 
 

@@ -28,12 +28,12 @@ export class DevicesPage implements OnInit{
 
     ngOnInit() {
       this.result = this.dataService.searchData(this.msal.getUserEmail());
-      console.log('result :' + this.result);
+      //console.log('result :' + this.result);
     }
 
     initializeItems() {
         this.items = this.result;
-        console.log(this.items)
+        //console.log(this.items)
     }
 
     getItems(ev) {

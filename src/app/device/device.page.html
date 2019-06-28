@@ -18,20 +18,20 @@
       <ion-note color="primary" slot="end">50</ion-note>
     </ion-item>
     
-    <ion-item>
-        <ion-label>Send a command</ion-label>
+      <ion-item>
+        <ion-label>Send a command to the device</ion-label>
         <ion-select value="command" okText="Okay" cancelText="Dismiss" [(ngModel)]="value" (ionChange)="sendDeviceValue();">
-          <ion-select-option  value="0">Change temperature</ion-select-option>
-          <ion-select-option value="1">Send signal</ion-select-option>
+          <ion-select-option  value="0">Open LED</ion-select-option>
+          <ion-select-option value="1">Other command</ion-select-option>
         </ion-select>
       </ion-item>
 
-    <ion-card>
+    <!--<ion-card>
       <ion-card-header>
         <ion-card-subtitle>Chart all sensors average</ion-card-subtitle>
       </ion-card-header>
       <google-chart stye="padding:30px" *ngIf="pieChartData" [data]="pieChartData"></google-chart>
-    </ion-card>
+    </ion-card>-->
 
 
     <ion-list-header color="">Device sensors</ion-list-header>

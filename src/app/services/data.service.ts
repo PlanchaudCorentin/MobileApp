@@ -60,6 +60,7 @@ export class DataService {
 
 
 
+
   // METRICS //
 
   getMetricsBySensor(mac_adress : string){
@@ -74,12 +75,12 @@ export class DataService {
     return this.http.get(`${this.url_metrics}api/stat/${encodeURI(mac_adress)}/${encodeURI(name_sensor)}/day`);
   }
 
-  getMetricsSensorByWeek(mac_adress : string){
-    return this.http.get(`${this.url_metrics}api/stat/${encodeURI(mac_adress)}/week`);
+  getMetricsSensorByWeek(mac_adress : string, name_sensor : string){
+    return this.http.get(`${this.url_metrics}api/stat/${encodeURI(mac_adress)}/${encodeURI(name_sensor)}/week`);
   }
 
-  getMetricsSensorByMonth(mac_adress : string){
-    return this.http.get(`${this.url_metrics}api/stat/${encodeURI(mac_adress)}/month`);
+  getMetricsSensorByMonth(mac_adress : string, name_sensor : string){
+    return this.http.get(`${this.url_metrics}api/stat/${encodeURI(mac_adress)}/${encodeURI(name_sensor)}/month`);
   }
 
 

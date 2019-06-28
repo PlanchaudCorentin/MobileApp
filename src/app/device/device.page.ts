@@ -45,9 +45,12 @@ export class DevicePage implements OnInit {
   }
 
   sendDeviceValue(){
-    console.log("test")
-    this.dataService.pushCommand("Led");
-    //console.log(this.dataService.pushCommand("Led"))
+    let commandValue = this.value;
+    if(commandValue == 0){
+      this.dataService.pushCommand("Led");
+    }else{
+      //Other 
+    }
   }
 
   itemClicked(item: any) {
