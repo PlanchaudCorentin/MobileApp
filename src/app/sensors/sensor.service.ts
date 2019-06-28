@@ -20,7 +20,7 @@ export class SensorsService {
               hours: "10:07"
             },
             {
-              sum: 45,
+              humidity: 45,
               hours: "10:08"
             },
             {

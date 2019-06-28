@@ -23,6 +23,7 @@ export class DataService {
   url = 'http://192.168.43.89:8090/'; 
   url_persistance = 'http://192.168.43.89:8080/'; 
   url_metrics = "http://192.168.43.146:5001/" 
+  url_command = "http://192.168.43.146:3615/"
 
   constructor(private http: HttpClient, private msalService: MsalService) { }
 
@@ -53,14 +54,44 @@ export class DataService {
   postCommand(id : string){
   }
 
+  getSensorById(id : string){
+    return this.http.get(`${this.url}sensors/${encodeURI(id)}`);
+  }
+
 
 
   // METRICS //
 
   getMetricsBySensor(mac_adress : string){
-    return this.http.get(`${this.url_metrics}api/stat/${encodeURI(mac_adress)}/`);
+    return this.http.get(`${this.url}api/stat/${encodeURI(mac_adress)}/`);
   }
 
+  getMetricsDeviceByDay(mac_adress : string){
+    return this.http.get(`${this.url_metrics}api/stat/${encodeURI(mac_adress)}/day`);
+  }
+
+  getMetricsSensorByDay(mac_adress : string, name_sensor : string){
+    return this.http.get(`${this.url_metrics}api/stat/${encodeURI(mac_adress)}/${encodeURI(name_sensor)}/day`);
+  }
+
+  getMetricsSensorByWeek(mac_adress : string){
+    return this.http.get(`${this.url_metrics}api/stat/${encodeURI(mac_adress)}/week`);
+  }
+
+  getMetricsSensorByMonth(mac_adress : string){
+    return this.http.get(`${this.url_metrics}api/stat/${encodeURI(mac_adress)}/month`);
+  }
+
+
+  // COMMAND //
+
+  pushCommand(command : string){
+    return this.http.get(`${this.url_command}api/command/${encodeURI(command)}`).pipe(map(data => {})).subscribe(result => {
+      console.log(result);
+    });
+  
+    
+  }
 
 
   // PERSISTANCE //

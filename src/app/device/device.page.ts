@@ -15,6 +15,7 @@ import { MsalService } from '../services/msal.service';
 })
 export class DevicePage implements OnInit {
 
+  command: Observable<any>;
   value: number;
   result: Observable<any>;
   macaddress: Observable<any>;
@@ -26,15 +27,13 @@ export class DevicePage implements OnInit {
   sensor2: { id?: string; name?: string; id_device?: string; data: any };
   sensor: { id?: string; name?: string; id_device?: string; data: any }[];
 
-
   constructor(
     private activatedRoute: ActivatedRoute, 
     public devicesService: DevicesService, 
     private sensorsService: SensorsService, 
     private dataService: DataService, 
     private msal: MsalService,
-    private route: Router) { 
-  }
+    private route: Router) { }
 
   public sensorslists = this.sensorsService.lists;
 
@@ -43,30 +42,12 @@ export class DevicePage implements OnInit {
     this.device = this.devicesService.lists.find(e => { return e.id === this.itemInfo });
     this.sensor = this.sensorsService.lists.filter(e => { return e.id_device === this.device.id });
     this.result = this.dataService.getDeviceById(this.itemInfo);
-    this.macaddress = this.dataService.searchData(this.msal.getUserEmail());
-
-    //this.macaddress = this.dataService.getMacAdressByIdDevice(this.itemInfo);
-    this.macaddress.forEach(element=> {
-      //console.log(element[0].mac_address)
-
-      let macaddress2 = element[0].mac_address
-      this.metrics = this.dataService.getMetricsBySensor("44:81:C0:0D:6C:E6");
-      //console.log(this.metrics);
-      this.metrics.forEach(element2=> {
-        console.log(element2);
-      })
-
-    })
   }
 
-
   sendDeviceValue(){
-    let commandValue = this.value;
-    if(commandValue == 0){
-      console.log("La commande est : ");
-    }else{
-
-    }
+    console.log("test")
+    this.dataService.pushCommand("Led");
+    //console.log(this.dataService.pushCommand("Led"))
   }
 
   itemClicked(item: any) {
@@ -82,11 +63,11 @@ export class DevicePage implements OnInit {
   lines : string[] = [];
   average:string;
   
-  dataTable2 = [[
+  /*dataTable2 = [[
     'Type', 'Humidity', 'Temperature'
   ],
   
-  ['Sensor 1', 12, 13]];
+  ['Sensor 1', 12, 13]];*/
   
   /*useAngularLibrary() {
     this.pieChartData = {

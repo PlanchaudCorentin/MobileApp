@@ -18,14 +18,15 @@
 
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>Chart sensors average</ion-card-subtitle>
+      <ion-card-subtitle>Chart sensors by day</ion-card-subtitle>
     </ion-card-header>
-    <google-chart stye="padding:30px" *ngIf="pieChartDataSensor" [data]="pieChartDataSensor"></google-chart>
+    <google-chart stye="padding:30px" *ngIf="pieChartDataDay" [data]="pieChartDataDay"></google-chart>
   </ion-card>
 
 
-  <ion-item *ngFor="let item of (result | async)">
-      ID Sensor : {{item.data}} - {{item.data_type}} - {{item.unit}}
+  <!--<ion-item *ngFor="let dataAverage of (dataAverage | async)">-->
+  <ion-item>
+      ID Sensor : {{dataAverage}}
   </ion-item>
 
 
