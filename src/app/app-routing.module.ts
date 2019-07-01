@@ -17,9 +17,10 @@ const routes: Routes = [
     { path: 'sensor', 
       loadChildren: './sensor/sensor.module#SensorPageModule' }
 ];
+
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot( routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })

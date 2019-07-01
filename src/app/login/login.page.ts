@@ -26,7 +26,12 @@ export class LoginPage implements OnInit {
     ngOnInit() {
       this.result = this.dataService.searchData(this.msalService.getUserEmail());
       //this.dataService.postUserAD(this.msalService.getFullName(), this.msalService.getUserEmail())
+
+  
+
     }
+
+    
 
     useremail(){
       let useremail = this.msalService.getUserEmail();

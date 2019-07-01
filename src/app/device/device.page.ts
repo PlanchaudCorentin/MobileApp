@@ -26,6 +26,7 @@ export class DevicePage implements OnInit {
   device: { id?: string; name?: string; data: any };
   sensor2: { id?: string; name?: string; id_device?: string; data: any };
   sensor: { id?: string; name?: string; id_device?: string; data: any }[];
+  pages: any;
 
   constructor(
     private activatedRoute: ActivatedRoute, 
@@ -42,7 +43,6 @@ export class DevicePage implements OnInit {
     this.device = this.devicesService.lists.find(e => { return e.id === this.itemInfo });
     this.sensor = this.sensorsService.lists.filter(e => { return e.id_device === this.device.id });
     this.result = this.dataService.getDeviceById(this.itemInfo);
-
     console.log("Sensors by devices : " + this.result)
   }
 
@@ -51,7 +51,7 @@ export class DevicePage implements OnInit {
     if(commandValue == 0){
       this.dataService.pushCommand("Led");
     }else{
-      //Other 
+      this.dataService.pushCommand("Led");
     }
   }
 
@@ -67,23 +67,6 @@ export class DevicePage implements OnInit {
   dataTable : any[] = [];
   lines : string[] = [];
   average:string;
-  
-  /*dataTable2 = [[
-    'Type', 'Humidity', 'Temperature'
-  ],
-  
-  ['Sensor 1', 12, 13]];*/
-  
-  /*useAngularLibrary() {
-    this.pieChartData = {
-      chartType: 'ColumnChart',
-      dataTable: this.dataTable2,
-      legend: {
-        position: 'bottom'
-      }
-    };
-  
-  }*/
 
   useAngularLibrary() {
     this.lines.push('Type', 'Average');

@@ -1,5 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { MsalService } from '../services/msal.service';
 
 import { DevicePage } from './device.page';
 
@@ -9,6 +12,11 @@ describe('DevicePage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        HttpClientModule,
+      ],
+      providers: [MsalService],
       declarations: [ DevicePage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
